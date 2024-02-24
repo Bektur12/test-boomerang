@@ -1,9 +1,8 @@
-'use client'
 import { Modal } from '../UI/Modal/Modal'
 import { useState } from 'react'
-
 import { useForm } from 'react-hook-form'
 import { TodoItem } from '~/types'
+import { Button } from '../UI/Button/Button'
 
 interface Props {}
 
@@ -48,19 +47,8 @@ export const TodoForm: React.FC<Props> = ({}) => {
 					placeholder='Описание'
 				></textarea>
 				<div className='mt-2 text-center sm:text-left items-center gap-2 sm:flex'>
-					<button
-						type='button'
-						className='w-full mt-2 p-2.5 flex-1 text-gray-800 rounded-md outline-none border border-gray-300 ring-offset-2 ring-gray-600 focus:ring-2 dark:bg-slate-900 dark:text-white'
-						onClick={() => setShow(false)}
-					>
-						Отмена
-					</button>
-					<button
-						type='submit'
-						className='w-full mt-2 p-2.5 flex-1 text-white bg-cyan-600 rounded-md outline-none ring-offset-2 ring-cyan-600 focus:ring-2'
-					>
-						Добавить
-					</button>
+					<Button>Отмена</Button>
+					<Button>Создать</Button>
 				</div>
 			</form>
 		</Modal>

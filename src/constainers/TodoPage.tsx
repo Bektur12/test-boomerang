@@ -1,6 +1,5 @@
-'use client'
+import { TodoForm } from '~/components/Todo/TodoForm'
 import { TodoList } from '~/components/Todo/TodoList'
-import { TodoForm } from '../components/Todo/TodoForm'
 
 export const TodoPages: React.FC = () => {
 	return (
