@@ -6,6 +6,10 @@ export const getTodos = async () => {
 	return response.data
 }
 
+export const getTodosById = async (id: string) => {
+	const response = await baseAxios.get(`/todos/${id}`)
+	return response.data
+}
 export const addTodoItem = async (todo: Todo) => {
 	const response = await baseAxios.post('/todos', todo)
 	return response.data
@@ -16,7 +20,7 @@ export const updateTodoItem = async (todo: Todo) => {
 	return response.data
 }
 
-export const deleteTodoItem = async (id: Todo) => {
+export const deleteTodoItem = async (id: number) => {
 	const response = await baseAxios.delete(`/todos/${id}`)
 	return response.data
 }

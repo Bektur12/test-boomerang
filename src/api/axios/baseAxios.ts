@@ -1,2 +1,2 @@
 import axios from 'axios'
-export const baseAxios = axios.create({ baseURL: '' })
+export const baseAxios = axios.create({ baseURL: 'http://localhost:4000' })

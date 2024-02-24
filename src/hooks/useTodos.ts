@@ -3,11 +3,12 @@ import {
 	addTodoItem,
 	deleteTodoItem,
 	getTodos,
+	getTodosById,
 	updateTodoItem,
 } from '../api/todos/todos'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 
-export const useTodos = () => {
+export const useTodos = ({ todoId }: { todoId?: string }) => {
 	const queryClient = useQueryClient()
 
 	const { data: todos } = useQuery({
@@ -15,6 +16,10 @@ export const useTodos = () => {
 		queryFn: getTodos,
 	})
 
+	const { data: todo } = useQuery({
+		queryKey: [QUERY_KEY, todoId],
+		queryFn: () => getTodosById(todoId as string),
+	})
 	const addTodoMutation = useMutation({
 		mutationFn: addTodoItem,
 		onSuccess: () => {
@@ -30,7 +35,7 @@ export const useTodos = () => {
 	})
 
 	const deleteTodoMutation = useMutation({
-		mutationFn: deleteTodoItem,
+		mutationFn: (todoId: number) => deleteTodoItem(todoId),
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: [QUERY_KEY] })
 		},
@@ -38,8 +43,9 @@ export const useTodos = () => {
 
 	return {
 		todos,
+		todo,
 		addTodo: addTodoMutation.mutate,
 		updateTodo: updateTodoMutation.mutate,
-		deleteTodo: deleteTodoMutation.mutate,
+		deleteTodo: deleteTodoMutation.mutateAsync,
 	}
 }

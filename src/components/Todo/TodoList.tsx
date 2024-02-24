@@ -1,16 +1,16 @@
 import { Todo } from '~/types'
-import { TodoItem } from './TodoItem'
+import { TodoCard } from './TodoCard'
 
 interface Props {
 	todos: Todo[]
 }
 
-export const TodoList: React.FC<Props> = ({ todos }) => {
+export const TodoList: React.FC<Props> = ({ todos = [] }) => {
 	return (
-		<>
+		<div className='flex flex-wrap gap-3 w-full'>
 			{todos.map((todo) => (
-				<TodoItem key={todo.id} todo={todo} />
+				<TodoCard key={todo.id} todo={todo} />
 			))}
-		</>
+		</div>
 	)
 }
