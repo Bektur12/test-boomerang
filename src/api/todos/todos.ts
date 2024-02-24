@@ -1,4 +1,4 @@
-import { Todo, TodoItem } from '~/types'
+import { Todo } from '~/types'
 import { baseAxios } from '../axios/baseAxios'
 
 export const getTodos = async () => {
@@ -6,7 +6,7 @@ export const getTodos = async () => {
 	return response.data
 }
 
-export const addTodoItem = async (todo: TodoItem) => {
+export const addTodoItem = async (todo: Todo) => {
 	const response = await baseAxios.post('/todos', todo)
 	return response.data
 }
@@ -16,7 +16,7 @@ export const updateTodoItem = async (todo: Todo) => {
 	return response.data
 }
 
-export const deleteTodoItem = async (id: TodoItem) => {
+export const deleteTodoItem = async (id: Todo) => {
 	const response = await baseAxios.delete(`/todos/${id}`)
 	return response.data
 }

@@ -1,17 +1,17 @@
 import { Modal } from '../UI/Modal/Modal'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { TodoItem } from '~/types'
 import { Button } from '../UI/Button/Button'
+import { Todo } from '~/types'
 
 interface Props {}
 
 export const TodoForm: React.FC<Props> = ({}) => {
 	const [show, setShow] = useState<boolean>(false)
 
-	const methods = useForm<TodoItem>()
+	const methods = useForm<Todo>()
 
-	const submitHandler = (formData: TodoItem) => {
+	const submitHandler = (formData: Todo) => {
 		setShow(false)
 	}
 
