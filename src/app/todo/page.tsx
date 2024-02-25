@@ -1,16 +1,22 @@
 'use client'
 import React from 'react'
 import { TodoList } from '~/components/Todo/TodoList'
-import { useTodos } from '~/hooks/useTodos'
+import { useTodosQuery } from '~/hooks/queries'
 
 const TodoPages: React.FC = () => {
-	const { todos } = useTodos({})
+	const { data, isLoading, isError } = useTodosQuery()
+
+	if (isLoading) {
+		return <div>Loading...</div>
+	}
+
+	if (isError) {
+		return <div>Что-то пошло не так</div>
+	}
+
 	return (
-		<div className='flex flex-col items-center  min-h-screen py-30'>
-			<h1 className='text-2xl font-bold mb-4'>TODO List</h1>
-			<div>
-				<TodoList todos={todos} />
-			</div>
+		<div className='flex flex-col items-center p-20 pt-40'>
+			<TodoList todos={data || []} />
 		</div>
 	)
 }

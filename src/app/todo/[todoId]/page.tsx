@@ -1,20 +1,27 @@
 'use client'
 import { useParams, useRouter } from 'next/navigation'
+import { toast } from 'sonner'
 import { Button } from '~/components/UI/Button/Button'
-import { useTodos } from '~/hooks/useTodos'
+import { useDeleteTodoMutation, useTodosByIdQuery } from '~/hooks/queries'
+import { getServerError } from '~/utils/helpers/error.helper'
 
 const Page = () => {
-	const { todoId } = useParams()
 	const router = useRouter()
+	const { todoId } = useParams()
 
-	const { todo = {}, deleteTodo } = useTodos({ todoId: todoId as string })
+	const { data: todo = {} } = useTodosByIdQuery(todoId as string)
+
+	const deleteTodo = useDeleteTodoMutation()
 
 	const handleDeleteTodo = async () => {
 		try {
-			await deleteTodo(Number(todoId)).then(() => {
+			await deleteTodo.mutateAsync(Number(todoId)).then(() => {
 				router.back()
+				toast.success('Успешно удален!')
 			})
-		} catch (error) {}
+		} catch (e) {
+			toast.error(getServerError(e))
+		}
 	}
 
 	return (

@@ -2,20 +2,27 @@
 import { FormProvider, useForm } from 'react-hook-form'
 import { Todo } from '~/types'
 import { TodoDetails } from '../Details/TodoDetails'
-import { useTodos } from '~/hooks/useTodos'
 import { useRouter } from 'next/navigation'
+import { toast } from 'sonner'
+import { getServerError } from '~/utils/helpers/error.helper'
+import { useCreateTodoMutation } from '~/hooks/queries'
 
 interface Props {}
 
 export const TodoForm: React.FC<Props> = ({}) => {
 	const methods = useForm<Todo>()
-	const { addTodo } = useTodos({})
+	const createTodo = useCreateTodoMutation()
 	const router = useRouter()
 
 	const submitHandler = async (formData: Todo) => {
-		await addTodo({ ...formData }).then(() => {
-			router.back()
-		})
+		try {
+			await createTodo.mutateAsync({ ...formData }).then(() => {
+				router.back()
+				toast.success('Успешно Добавлен')
+			})
+		} catch (e) {
+			toast.error(getServerError(e))
+		}
 	}
 
 	return (

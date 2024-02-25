@@ -21,9 +21,9 @@ const RootLayout: FC<LayoutProps> = ({ children }) => {
 						<Header />
 						{children}
 					</main>
+					<Toaster />
 				</body>
 			</html>
-			<Toaster />
 		</QueryClientProvider>
 	)
 }

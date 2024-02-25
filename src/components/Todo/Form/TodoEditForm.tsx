@@ -3,22 +3,29 @@ import React, { useEffect } from 'react'
 import { TodoDetails } from '../Details/TodoDetails'
 import { FormProvider, useForm } from 'react-hook-form'
 import { Todo } from '~/types'
-import { useTodos } from '~/hooks/useTodos'
+import { useTodosByIdQuery, useUpdateTodoMutation } from '~/hooks/queries'
 import { useParams, useRouter } from 'next/navigation'
+import { toast, useSonner } from 'sonner'
+import { getServerError } from '~/utils/helpers/error.helper'
 
 export const TodoEditForm = () => {
 	const { todoId } = useParams<{ todoId: string }>()
-
+	const methods = useForm<Todo>()
 	const router = useRouter()
 
-	const methods = useForm<Todo>()
+	const updateTodo = useUpdateTodoMutation(todoId)
 
-	const { todo, updateTodo } = useTodos({ todoId })
+	const { data: todo } = useTodosByIdQuery(todoId)
 
 	const onSubmit = async (formData: Todo) => {
-		await updateTodo({ todo: { ...formData } }).then(() => {
-			router.back()
-		})
+		try {
+			await updateTodo.mutateAsync({ todo: { ...formData } }).then(() => {
+				router.back()
+				toast.success('Успешно изменен')
+			})
+		} catch (e) {
+			toast.error(getServerError(e))
+		}
 	}
 
 	useEffect(() => {

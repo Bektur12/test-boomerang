@@ -4,7 +4,7 @@ import { Button } from '~/components/UI/Button/Button'
 
 const Header: FC = () => {
 	return (
-		<header className='bg-black py-5'>
+		<header className='bg-black py-5 fixed w-full top-0'>
 			<div className='layout text-white flex items-center justify-between'>
 				<h2 className='text-2xl'>
 					<Link href='/'>Todos App</Link>
