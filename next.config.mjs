@@ -1,6 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-};
+	reactStrictMode: true,
+	images: {
+		domains: [
+			'external-content.duckduckgo.com',
+			'skillbox.ru',
+			'millerart.ru',
+		],
+	},
+}
 
-export default nextConfig;
+export default nextConfig
