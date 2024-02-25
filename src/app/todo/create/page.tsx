@@ -1,10 +1,10 @@
 'use client'
 import React, { FC } from 'react'
-import { TodoForm } from '~/components/Todo/TodoForm'
+import { TodoForm } from '~/components/Todo/Form/TodoForm'
 
 const Page: FC = () => {
 	return (
-		<div className='layout py-3'>
+		<div className='flex  items-center  h-screen justify-center w-full'>
 			<TodoForm />
 		</div>
 	)

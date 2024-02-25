@@ -18,7 +18,7 @@ export const TodoCard: React.FC<Props> = ({ todo }) => {
 					<Link href={`todo/${todo.id}`}>Подробнее</Link>
 				</Button>
 				<Button variant={'outline'}>
-					<Link href={`todo/update/5`}>Редактировать</Link>
+					<Link href={`todo/update/${todo.id}`}>Редактировать</Link>
 				</Button>
 			</div>
 		</div>

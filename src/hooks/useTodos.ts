@@ -28,7 +28,8 @@ export const useTodos = ({ todoId }: { todoId?: string }) => {
 	})
 
 	const updateTodoMutation = useMutation({
-		mutationFn: updateTodoItem,
+		mutationFn: (data: { todo: any }) =>
+			updateTodoItem(Number(todoId), data.todo),
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: [QUERY_KEY] })
 		},
@@ -44,8 +45,8 @@ export const useTodos = ({ todoId }: { todoId?: string }) => {
 	return {
 		todos,
 		todo,
-		addTodo: addTodoMutation.mutate,
-		updateTodo: updateTodoMutation.mutate,
+		addTodo: addTodoMutation.mutateAsync,
+		updateTodo: updateTodoMutation.mutateAsync,
 		deleteTodo: deleteTodoMutation.mutateAsync,
 	}
 }

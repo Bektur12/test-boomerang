@@ -16,10 +16,14 @@ export const TodoDetails = ({ title, onSubmit }: Details) => {
 	return (
 		<form
 			onSubmit={methods.handleSubmit(onSubmit)}
-			className='w-full max-w-lg bg-white rounded-lg shadow-md p-8'
+			className='w-full max-w-lg bg-white rounded-lg shadow-md p-8 flex gap-10 flex-col'
 		>
 			<h1 className='text-3xl font-bold text-center mb-8'>{title}</h1>
-			<Input {...methods.register('title')} label='title' />
+			<Input
+				{...methods.register('title')}
+				error={methods.formState.errors.title}
+				label='title'
+			/>
 			<Textarea
 				{...methods.register('description')}
 				label='description'

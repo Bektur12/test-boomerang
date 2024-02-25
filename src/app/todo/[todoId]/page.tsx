@@ -8,11 +8,10 @@ const Page = () => {
 	const router = useRouter()
 
 	const { todo = {}, deleteTodo } = useTodos({ todoId: todoId as string })
-	console.log(todo, 'hello')
 
 	const handleDeleteTodo = async () => {
 		try {
-			deleteTodo(Number(todoId)).then(() => {
+			await deleteTodo(Number(todoId)).then(() => {
 				router.back()
 			})
 		} catch (error) {}

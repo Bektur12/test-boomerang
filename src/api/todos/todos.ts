@@ -15,8 +15,8 @@ export const addTodoItem = async (todo: Todo) => {
 	return response.data
 }
 
-export const updateTodoItem = async (todo: Todo) => {
-	const response = await baseAxios.patch(`/todos/${todo.id}`, todo)
+export const updateTodoItem = async (id: number, todo: Omit<Todo, 'id'>) => {
+	const response = await baseAxios.put(`/todos/${id}`, todo)
 	return response.data
 }
 

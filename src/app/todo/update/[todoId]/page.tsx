@@ -1,12 +1,24 @@
 import React, { FC } from 'react'
-import { TodoDetails } from '~/components/Todo/Details/TodoDetails'
+import { TodoEditForm } from '~/components/Todo/Form/TodoEditForm'
 
 const Page: FC = () => {
 	return (
-		<div>
-			<TodoDetails title='Edit Todo' onSubmit={() => {}} />
+		<div className='flex  items-center  h-screen justify-center w-full'>
+			<TodoEditForm />
 		</div>
 	)
 }
 
 export default Page
+
+
+
+
+
+
+
+
+
+
+
+
