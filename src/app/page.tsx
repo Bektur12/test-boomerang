@@ -1,6 +1,5 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import Toolbar from '../components/Game/Toolbar'
 import { shuffleArray } from '~/utils/helpers/shuffleArray'
 import Card, { Icard } from '~/components/Game/Card/Card'
 import { CARDS } from '~/utils/constants/constants'
@@ -45,16 +44,6 @@ const Game = () => {
 		}
 	}
 
-	const resetCards = () => {
-		setSelectedCards({ first: null, second: null })
-		const newCards = cards.map(({ icon }) => {
-			return { icon, isActive: false, isFound: false }
-		})
-		setCount({ correct: 0, attempts: 0 })
-		setCards(shuffleArray(newCards))
-		alert('Reset done!!!')
-	}
-
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			const newCards = [...cards]
@@ -96,9 +85,9 @@ const Game = () => {
 	}, [cards, selectedCards, count])
 
 	return (
-		<>
-			<Toolbar onReset={resetCards} attempts={count.attempts} />
-			<div className='h-590 w-590 p-20 font-Roboto rounded-10 grid grid-cols-4 grid-rows-4 justify-center gap-20 bg-background'>
+		<div className='flex justify-center w-590 flex-col mt-80'>
+			<h1 className='text-center'>Memory Game</h1>
+			<div className='h-36 p-20  grid grid-cols-4 grid-rows-4 justify-center gap-20'>
 				{cards.map((card, i) => {
 					return (
 						<Card
@@ -109,7 +98,7 @@ const Game = () => {
 					)
 				})}
 			</div>
-		</>
+		</div>
 	)
 }
 
