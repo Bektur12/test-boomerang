@@ -1,2 +1,3 @@
 import axios from 'axios'
-export const baseAxios = axios.create({ baseURL: 'http://localhost:4000' })
+import { BASE_URL } from '~/utils/constants/constants'
+export const baseAxios = axios.create({ baseURL: BASE_URL })

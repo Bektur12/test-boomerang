@@ -1,19 +1,67 @@
-export const QUERY_KEY = 'todos'
+import { Icard } from '~/components/Game/Card/Card'
 
-export const SLIDES = [
+export const QUERY_KEY = 'todos'
+export const BASE_URL = 'http://localhost:4000'
+
+export const CARDS: Icard[] = [
 	{
-		id: 2,
-		title: 'Tranquil Beach with Gentle Waves and Clear Blue Sky',
-		url: 'https://skillbox.ru/upload/setka_images/14055326052022_c7c2d6650fe8dd3125b1541cb39af56649bd56fa.jpg',
+		icon: 'https://img.icons8.com/fluency/48/angularjs.png',
+		isActive: false,
+		isFound: false,
 	},
 	{
-		id: 3,
-		title: 'Tranquil Beach with Gentle Waves and Clear Blue Sky',
-		url: 'https://skillbox.ru/upload/setka_images/14055326052022_0ed1686442ac630326a48ddcef43684fa02b904b.jpg',
+		icon: 'https://img.icons8.com/fluency/48/angularjs.png',
+		isActive: false,
+		isFound: false,
 	},
 	{
-		id: 5,
-		title: 'Tranquil Beach with Gentle Waves and Clear Blue Sky',
-		url: 'https://millerart.ru/wp-content/uploads/2023/10/programmist-prikoly-3.webp',
+		icon: 'https://img.icons8.com/fluency/48/angularjs.png',
+		isActive: false,
+		isFound: false,
+	},
+	{
+		icon: 'https://img.icons8.com/fluency/48/angularjs.png',
+		isActive: false,
+		isFound: false,
+	},
+	{
+		icon: '	https://img.icons8.com/officel/16/react.png',
+		isActive: false,
+		isFound: false,
+	},
+	{
+		icon: '	https://img.icons8.com/officel/16/react.png',
+		isActive: false,
+		isFound: false,
+	},
+	{
+		icon: 'https://img.icons8.com/dusk/64/docker.png',
+		isActive: false,
+		isFound: false,
+	},
+	{
+		icon: 'https://img.icons8.com/dusk/64/docker.png',
+		isActive: false,
+		isFound: false,
+	},
+	{
+		icon: 'https://img.icons8.com/fluency/48/node-js.png',
+		isActive: false,
+		isFound: false,
+	},
+	{
+		icon: 'https://img.icons8.com/fluency/48/node-js.png',
+		isActive: false,
+		isFound: false,
+	},
+	{
+		icon: 'https://img.icons8.com/fluency/48/typescript--v2.png',
+		isActive: false,
+		isFound: false,
+	},
+	{
+		icon: 'https://img.icons8.com/fluency/48/typescript--v2.png',
+		isActive: false,
+		isFound: false,
 	},
 ]

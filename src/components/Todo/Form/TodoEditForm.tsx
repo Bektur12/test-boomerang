@@ -5,7 +5,7 @@ import { FormProvider, useForm } from 'react-hook-form'
 import { Todo } from '~/types'
 import { useTodosByIdQuery, useUpdateTodoMutation } from '~/hooks/queries'
 import { useParams, useRouter } from 'next/navigation'
-import { toast, useSonner } from 'sonner'
+import { toast } from 'sonner'
 import { getServerError } from '~/utils/helpers/error.helper'
 
 export const TodoEditForm = () => {
@@ -20,7 +20,7 @@ export const TodoEditForm = () => {
 	const onSubmit = async (formData: Todo) => {
 		try {
 			await updateTodo.mutateAsync({ todo: { ...formData } }).then(() => {
-				router.back()
+				router.push('/todo')
 				toast.success('Успешно изменен')
 			})
 		} catch (e) {

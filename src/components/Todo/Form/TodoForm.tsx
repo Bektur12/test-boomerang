@@ -17,7 +17,7 @@ export const TodoForm: React.FC<Props> = ({}) => {
 	const submitHandler = async (formData: Todo) => {
 		try {
 			await createTodo.mutateAsync({ ...formData }).then(() => {
-				router.back()
+				router.push('/todo')
 				toast.success('Успешно Добавлен')
 			})
 		} catch (e) {

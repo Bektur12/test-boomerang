@@ -17,11 +17,11 @@ const RootLayout: FC<LayoutProps> = ({ children }) => {
 					<title>Todo App</title>
 				</head>
 				<body>
+					<Toaster />
 					<main>
 						<Header />
 						{children}
 					</main>
-					<Toaster />
 				</body>
 			</html>
 		</QueryClientProvider>

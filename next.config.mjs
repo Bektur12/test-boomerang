@@ -6,6 +6,7 @@ const nextConfig = {
 			'external-content.duckduckgo.com',
 			'skillbox.ru',
 			'millerart.ru',
+			'img.icons8.com',
 		],
 	},
 }
